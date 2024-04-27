@@ -8,6 +8,7 @@ import {
 import Root from './components/Root';
 import Home from './components/Home';
 import Error from './components/Error';
+import LoginForm from './components/LoginForm';
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/login',
+        element: <LoginForm></LoginForm>
       }
     ]
   },
