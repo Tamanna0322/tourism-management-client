@@ -28,19 +28,19 @@ const LoginForm = () => {
                         </span>
                     </h1>
                 </div>
-                <div className="flex justify-between items-center ">
-                    <div className="w-[40%] ">
+                <div className="flex justify-between items-center flex-col md:flex-row">
+                    <div className="lg:w-[40%] md:w-[50%] w-[70%]">
                         <div className="w-full ">
                             <Lottie animationData={log} loop={true}></Lottie>
                         </div>
                     </div>
 
-                    <div className="hero min-h-screen w-[50%]">
+                    <div className="hero min-h-screen lg:w-[50%] md:w-[50%] w-[80%] flex justify-center">
                         <div className="hero-content flex flex-col md:flex-row-reverse w-[70%]">
                             <div className="text-center lg:text-left md:w-[50%] w-[80%] lg:w-full">
 
                             </div>
-                            <div className="card shrink-0 md:w-[600px] border border-green-700 max-w-sm shadow-2xl">
+                            <div className="card shrink-0 lg:w-[600px] border border-green-700 max-w-sm shadow-2xl">
                                 <form className="card-body">
                                     <div>
                                        
@@ -78,7 +78,7 @@ const LoginForm = () => {
                                     </div>
 
                                     <div className='mt-4'>
-                                        <p>Do Not Have any Account? <NavLink className='link link-hover text-green-600' to='/'>Sign UP</NavLink> </p>
+                                        <p>Do Not Have any Account? <NavLink className='link link-hover text-green-600' to='/register'>Sign UP</NavLink> </p>
                                     </div>
                                     <div className='flex mt-3 justify-between'>
                                         <div className='w-[30%] '>
