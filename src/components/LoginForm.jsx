@@ -10,7 +10,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const LoginForm = () => {
 
-    const { signInUser } = useContext(AuthContext)
+    const { signInUser, googleLogin } = useContext(AuthContext)
 
     const [showPass, setShowPass] = useState(false);
 
@@ -28,8 +28,14 @@ const LoginForm = () => {
             .catch(error => {
                 console.log(error)
             })
+    }
 
 
+    const socialLogin = provider =>{
+        provider()
+        .then(result =>{
+            console.log(result.user)
+        })
     }
 
     return (
@@ -123,7 +129,7 @@ const LoginForm = () => {
                                 </form>
 
                                 <div className="">
-                                    <button className="w-[80%] mx-auto border border-green-700 flex p-2 rounded-xl items-center justify-center gap-4">
+                                    <button onClick={() => socialLogin(googleLogin)} className="w-[80%] mx-auto border border-green-700 flex p-2 rounded-xl items-center justify-center gap-4">
                                         <FaGoogle className="text-xl"></FaGoogle>
                                         <p className="text-2xl"> Google</p>
                                     </button>
