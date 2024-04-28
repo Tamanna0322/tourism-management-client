@@ -17,12 +17,18 @@ const Navbar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-2 z-[15] p-2 shadow bg-base-100 rounded-box w-52">
 
-              <NavLink to='/'>Home</NavLink>
-              <NavLink to='/allSpot'>All Tourists Spot</NavLink>
+              <NavLink to='/' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg ' : 'font-semibold text-green-800'}>Home</NavLink>
+              <NavLink to='/allSpot' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg ' : 'font-semibold text-green-800'}>All Tourists Spot</NavLink>
               {
-                !user && <NavLink to='/register'>Register</NavLink>
+                !user && <NavLink to='/register' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg ' : 'font-semibold text-green-800'}>Register</NavLink>
+              }
+              {
+                user && <NavLink to='/addSpot' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg ' : 'font-semibold text-green-800'}>Add Tourists Spot</NavLink>
+              }
+              {
+                user && <NavLink to='/myList' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg ' : 'font-semibold text-green-800'}>My List</NavLink>
               }
 
             </ul>
@@ -36,12 +42,17 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">
             <div className="flex space-x-6 items-center">
 
-              <NavLink to='/'>Home</NavLink>
-              <NavLink to='/allSpot'>All Tourists Spot</NavLink>
+              <NavLink to='/' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg border border-green-700  ' : 'font-semibold text-green-800'}>Home</NavLink>
+              <NavLink to='/allSpot' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg border border-green-700  ' : 'font-semibold text-green-800'}>All Tourists Spot</NavLink>
               {
-                !user && <NavLink to='/register'>Register</NavLink>
+                !user && <NavLink to='/register' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg border border-green-700  ' : 'font-semibold text-green-800'}>Register</NavLink>
               }
-
+                {
+                user && <NavLink to='/addSpot' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg border border-green-700  ' : 'font-semibold text-green-800'}>Add Tourists Spot</NavLink>
+              }
+              {
+                user && <NavLink to='/myList' className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg border border-green-700  ' : 'font-semibold text-green-800'}>My List</NavLink>
+              }
 
             </div>
           </ul>
@@ -55,7 +66,7 @@ const Navbar = () => {
                      </div>
                  </div>
                                   
-                 <button onClick={logout} className="btn ml-3 text-green-600 font-bold border-green-700 bg-white  hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white">
+                 <button onClick={logout} className="btn md:ml-3 ml-1 text-green-600 font-bold border-green-700 bg-white  hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white">
                             Logout
                          </button>
              </div>
@@ -63,7 +74,7 @@ const Navbar = () => {
              :
 
              <NavLink to='/login'
-              className='btn ml-3 text-green-600 font-bold border-green-700 bg-white  hover:bg-gradient-to-r from-lime-600 to-lime-500 hover:text-white'>
+              className={({ isActive }) => isActive ? 'text-green-600 px-4 py-2 font-bold rounded-lg border border-green-700  ' : 'font-semibold text-green-800'}>
                  Login</NavLink>
              
               }

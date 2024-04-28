@@ -1,18 +1,23 @@
 import Lottie from "lottie-react";
 import log from '../assets/log.json';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { Typewriter } from 'react-simple-typewriter'
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from "../providers/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
 
-    const { signInUser, googleLogin } = useContext(AuthContext)
-
+    const { signInUser, googleLogin, setUser, user } = useContext(AuthContext)
+    console.log(user)
     const [showPass, setShowPass] = useState(false);
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -23,19 +28,46 @@ const LoginForm = () => {
 
         signInUser(email, password)
             .then(result => {
-                console.log(result.user)
+                setUser(result.user)
+                if(result.user){
+                    toast.success("Login successful", {
+                      position: "top-right",
+                      autoClose: 2000,
+                      onClose: () =>{
+                        setTimeout(() => {
+                          navigate(location?.state || '/')
+                        });
+                      } 
+                    });
+
+                  }
+               
             })
             .catch(error => {
                 console.log(error)
+                toast.error("Wrong information", {
+                    position: "top-right"
+                });
             })
     }
 
 
-    const socialLogin = provider =>{
+    const socialLogin = provider => {
         provider()
-        .then(result =>{
-            console.log(result.user)
-        })
+            .then(result => {
+                if (result.user) {
+                    toast.success("Login successful", {
+                        position: "top-right",
+                        autoClose: 2000,
+                        onClose: () => {
+                            setTimeout(() => {
+                                navigate(location?.state || '/')
+                            });
+                        }
+                    });
+
+                }
+            })
     }
 
     return (
@@ -145,6 +177,7 @@ const LoginForm = () => {
                 </div>
 
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -1,16 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import reg from '../assets/reg.json';
 import Lottie from "lottie-react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
-  const {createUser} = useContext(AuthContext);
+  const {createUser, user, setUser, updateUsersProfile } = useContext(AuthContext);
 
   const [error, setError] = useState('');
   const [showPass, setShowPass] = useState(false);
+
+  const navigate = useNavigate();
 
     const handleRegister = e =>{
       e.preventDefault();
@@ -41,7 +45,22 @@ const Register = () => {
 
       createUser(email, password)
       .then(result => {
-        console.log(result.user)
+           setUser(result.user)
+           updateUsersProfile(name, photo)
+           .then(() => {
+             toast.success("Registration complete", {
+               position: "top-right",
+               autoClose: 2000,
+               onClose: () =>{
+                 setTimeout(() => {
+                   navigate('/')
+                 });
+               }
+             })
+     
+               setUser({...user,displayName:name,photoURL:photo,email:email})
+               
+           })
       })
       .catch(error =>{
         console.log(error)
@@ -122,7 +141,7 @@ const Register = () => {
         </div>
         </div>
       </div>
-            
+      <ToastContainer />
         </div>
     );
 };
