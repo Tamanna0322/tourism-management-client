@@ -1,16 +1,57 @@
-
+import Swal from 'sweetalert2'
 
 const AddTourSpot = () => {
+
+    const handleAddBtn = event =>{
+        event.preventDefault();
+        const form = event.target;
+
+        const photo = form.photo.value;
+        const spot = form.spot.value;
+        const country = form.country.value;
+        const location = form.location.value;
+        const description = form.description.value;
+        const average = form.average.value;
+        const seasonality = form.seasonality.value;
+        const time = form.time.value;
+        const visitors = form.visitors.value;
+        const name = form.name.value;
+        const email = form.email.value;
+        const newTouristSpot ={photo, spot, country, location, description, average,seasonality,time, visitors,name,email};
+          console.log(newTouristSpot)
+
+        //   send data to the server
+        fetch('http://localhost:5000/add',{
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(newTouristSpot)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Tourist spot added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
+    }
+
     return (
         
        <div>
         
          <div className="border border-green-500 p-8 mb-16 rounded-xl bg-green-50">
-            <div className="mb-5">
-                <h3 className="text-center text-3xl font-bold text-green-700">ADD New Tourists Spot</h3>
+            <div className="md:mb-5 mb-3">
+                <h3 className="text-center md:text-3xl text-xl font-bold text-green-700">ADD New Tourists Spot</h3>
             </div>
-            <form>
-                <div className="mb-5">
+            <form onSubmit={handleAddBtn}>
+                <div className="md:mb-5 mb-3">
                     {/*image URL*/}
                     <div className="form-control">
                         <label className="label">
@@ -21,7 +62,7 @@ const AddTourSpot = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-5 mb-5">
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-5 md:mb-5 mb-3">
                     {/* spot name */}
                     <div className="form-control">
                         <label className="label">
@@ -47,16 +88,17 @@ const AddTourSpot = () => {
                         />
                     </div>
                 </div>
-                <div className="mb-5">
+                <div className="md:mb-5 mb-3">
+                    {/* description */}
                     <label className="label">
                         <span className="label-text text-green-900 font-semibold">Short Description</span>
                     </label>
 
-                    <textarea id="" name="description" placeholder="description" rows="8" cols="100" className="input input-bordered">
+                    <textarea id="" name="description" placeholder="description" rows="8" cols="100%" className="input input-bordered">
                        
                     </textarea>
                 </div>
-                <div className="mb-5 grid grid-cols-4 gap-5">
+                <div className="md:mb-5 mb-3 grid md:grid-cols-4 grid-cols-1 gap-5">
                      {/* average cost */}
                      <div className="form-control">
                         <label className="label">
@@ -94,7 +136,7 @@ const AddTourSpot = () => {
                     </div>
             </div>
 
-                <div className="mb-7 grid grid-cols-2 gap-5">
+                <div className="mb-7 grid md:grid-cols-2 grid-cols-1 gap-5">
                      {/* user name */}
                      <div className="form-control">
                         <label className="label">
@@ -115,7 +157,7 @@ const AddTourSpot = () => {
                 </div>
 
                <div className="">
-               <button className="btn w-full text-white bg-gradient-to-r from-green-500 to-green-500">ADD</button>
+                <input type="submit" value="ADD" className="btn w-full text-white bg-gradient-to-r from-green-500 to-green-500"/>
                </div>
 
             </form>

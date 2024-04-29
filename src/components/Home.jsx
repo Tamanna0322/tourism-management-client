@@ -10,11 +10,16 @@ import phuket from '../assets/phuket.jpg';
 import sundarban from '../assets/sundarban.jpg';
 import vietnam from '../assets/vietnam.webp';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useLoaderData } from "react-router-dom";
 
 
 
 
 const Home = () => {
+
+    const addTourist = useLoaderData();
+    console.log(addTourist);
+
     return (
         <div>
 
@@ -82,6 +87,11 @@ const Home = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
+
+
+           <div>
+            <h2>{addTourist.length}</h2>
+           </div>
 
         </div>
     );
