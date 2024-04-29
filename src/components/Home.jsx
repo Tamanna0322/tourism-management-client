@@ -11,13 +11,12 @@ import sundarban from '../assets/sundarban.jpg';
 import vietnam from '../assets/vietnam.webp';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useLoaderData } from "react-router-dom";
-
-
+import Tourist from "./Tourist";
 
 
 const Home = () => {
 
-    const addTourist = useLoaderData();
+    const addTourist = useLoaderData().slice(0, 6);
     console.log(addTourist);
 
     return (
@@ -89,8 +88,16 @@ const Home = () => {
             </Swiper>
 
 
-           <div>
-            <h2>{addTourist.length}</h2>
+           <div className="mt-14">
+           <div className="text-center">
+            <h2 className="text-3xl font-bold text-green-800"> Popular Tourist Destinations</h2>
+            <p className="md:w-[80%] w-[90%] mx-auto text-green-800 mt-3">Dive into captivating tourist spots worldwide, offering adventure, relaxation, and cultural immersion. Start your journey now!</p>
+        </div>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {
+                addTourist.map(tourist => <Tourist key={tourist._id} tourist={tourist}></Tourist>)
+            }
+          </div>
            </div>
 
         </div>

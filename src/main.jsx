@@ -14,6 +14,8 @@ import AuthProvider from './providers/AuthProvider';
 import AllTourSpot from './components/AllTourSpot';
 import AddTourSpot from './components/AddTourSpot';
 import MyList from './components/MyList';
+import ViewDetails from './components/ViewDetails';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -41,11 +43,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/addSpot',
-        element: <AddTourSpot></AddTourSpot>
+        element: <PrivateRoute><AddTourSpot></AddTourSpot></PrivateRoute>
       },
       {
         path: '/myList',
-        element: <MyList></MyList>
+        element: <PrivateRoute><MyList></MyList></PrivateRoute>
+      },
+      {
+        path: '/tourist/:id',
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/add')
       }
     ]
   },
