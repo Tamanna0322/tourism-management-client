@@ -13,7 +13,7 @@ const AllTourSpot = () => {
     
     const handleSort = async() =>{
         
-        const response= await fetch('http://localhost:5000/add/sort');
+        const response= await fetch('https://tourism-management-server-pi.vercel.app/add/sort');
         const data = await response.json();
         setSortedTourists(data);
        

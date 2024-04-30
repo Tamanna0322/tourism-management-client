@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/add')
+        loader: () => fetch('https://tourism-management-server-pi.vercel.app/add')
       },
       {
         path: '/login',
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: '/allSpot',
         element: <AllTourSpot></AllTourSpot>,
-        loader: () => fetch('http://localhost:5000/add')
+        loader: () => fetch('https://tourism-management-server-pi.vercel.app/add')
       },
       {
         path: '/addSpot',
@@ -50,22 +50,22 @@ const router = createBrowserRouter([
       {
         path: '/myList',
         element: <PrivateRoute><MyList></MyList></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/add')
+        loader: () => fetch('https://tourism-management-server-pi.vercel.app/add')
       },
       {
         path: '/tourist/:id',
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/add')
+        loader: () => fetch('https://tourism-management-server-pi.vercel.app/add')
       },
       {
         path: '/allTourist/:id',
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/add')
+        loader: () => fetch('https://tourism-management-server-pi.vercel.app/add')
       },
       {
         path: '/update/:id',
         element: <PrivateRoute><Update></Update></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/add/${params.id}`)
+        loader: ({params}) => fetch(`https://tourism-management-server-pi.vercel.app/add/${params.id}`)
       }
     ]
   },

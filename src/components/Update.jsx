@@ -25,7 +25,7 @@ const Update = () => {
           console.log(updateTouristSpot)
 
         
-        fetch(`http://localhost:5000/add/${_id}`,{
+        fetch(`https://tourism-management-server-pi.vercel.app/add/${_id}`,{
             method: 'PUT',
             headers: {
                 'content-type':'application/json'
