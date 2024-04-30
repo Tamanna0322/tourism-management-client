@@ -25,7 +25,7 @@ const AllTourSpot = () => {
           <div>
           <div className="flex justify-center mt-6">
            <details className="dropdown ">
-                <summary className="m-1 btn bg-[#23BE0A] md:px-5 md:py-3 text-white">Sort By
+                <summary className="m-1 btn  bg-gradient-to-r from-lime-600 to-lime-500 md:px-5 md:py-3 text-white">Sort By
                 <RiArrowDropDownLine className="text-2xl"></RiArrowDropDownLine>
                 </summary>
                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">

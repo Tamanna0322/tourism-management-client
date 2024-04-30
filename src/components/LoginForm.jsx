@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
 
-    const { signInUser, googleLogin, setUser, user } = useContext(AuthContext)
+    const { signInUser, googleLogin,githubLogin, setUser, user } = useContext(AuthContext)
     console.log(user)
     const [showPass, setShowPass] = useState(false);
 
@@ -165,7 +165,7 @@ const LoginForm = () => {
                                         <FaGoogle className="text-xl"></FaGoogle>
                                         <p className="text-2xl"> Google</p>
                                     </button>
-                                    <button className="w-[80%] my-5 p-2 mx-auto border border-green-700 rounded-xl flex items-center justify-center gap-4">
+                                    <button onClick={() => socialLogin(githubLogin)} className="w-[80%] my-5 p-2 mx-auto border border-green-700 rounded-xl flex items-center justify-center gap-4">
                                         <FaGithub className="text-xl"></FaGithub>
                                         <p className="text-2xl"> Github</p>
                                     </button>
