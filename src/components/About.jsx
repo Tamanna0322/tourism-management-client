@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import nature from '../assets/nature.jpg';
+import  hill from '../assets/hill.jpg';
+import tree from '../assets/tree.jpg';
 
 const About = () => {
 
@@ -10,8 +12,8 @@ const About = () => {
      }
 
     return (
-        <div className='flex justify-between  p-5'>
-                <div className='w-[50%]'>
+        <div className='flex flex-col md:flex-row justify-between  p-5'>
+                <div className='md:w-[50%]'>
                    <h2 className='text-4xl font-semibold text-green-800 mb-4'>About Us</h2>
                    <hr />
                     <div className='flex flex-col space-y-3'>
@@ -33,8 +35,10 @@ const About = () => {
                </div>
 
                 </div>
-                <div className='w-[35%] '>
-                  <img className='h-[400px] rounded-xl w-full' src={nature} alt="" />
+                <div className='md:w-[45%] flex flex-wrap lg:space-x-16 lg:space-y-3 md:space-x-6 space-x-3 mt-5'>
+                 <div> <img className=' rounded-full lg:w-[200px] lg:h-[200px] md:w-[130px] md:h-[130px] w-[90px] h-[90px] object-cover' src={nature} alt="" /></div>
+                 <div> <img className=' rounded-full lg:w-[200px] lg:h-[200px] md:w-[130px] md:h-[130px] w-[90px] h-[90px] object-cover' src={hill} alt="" /></div>
+                 <div> <img className=' rounded-full lg:w-[200px] lg:h-[200px] md:w-[130px] md:h-[130px] w-[90px] h-[90px] object-cover' src={tree} alt="" /></div>
                 </div>
         </div>
     );

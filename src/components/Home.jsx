@@ -13,6 +13,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useLoaderData } from "react-router-dom";
 import Tourist from "./Tourist";
 import About from "./About";
+import Another from "./Another";
 
 
 const Home = () => {
@@ -101,6 +102,10 @@ const Home = () => {
           </div>
            </div>
 
+            
+            <div>
+                <Another></Another>
+            </div>
 
            <div>
            <About></About>
