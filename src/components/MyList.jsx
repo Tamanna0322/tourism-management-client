@@ -1,13 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Item from "./Item";
+// import { useLoaderData } from "react-router-dom";
 
 
 const MyList = () => {
 
     const { user } = useContext(AuthContext);
     console.log(user)
+    // const loadedData = useLoaderData();
+    // const [tourists, setTourists] = useState(loadedData);
+
     const [item, setItem] = useState([]);
+    const [control, setControl] = useState(false);
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/myList/${user?.email}`)
@@ -15,7 +21,7 @@ const MyList = () => {
             .then(data => {
                 setItem(data)
             })
-    }, [user])
+    }, [user, control])
 
     return (
         <div className="mb-16">
@@ -37,7 +43,7 @@ const MyList = () => {
                     <tbody>
 
                         {
-                            item.map(myItem => <Item key={myItem._id} myItem={myItem}></Item>)
+                            item.map(myItem => <Item key={myItem._id} myItem={myItem} control={control} setControl={setControl}></Item>)
 
                         }
                     </tbody>
