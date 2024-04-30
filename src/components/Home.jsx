@@ -12,6 +12,7 @@ import vietnam from '../assets/vietnam.webp';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useLoaderData } from "react-router-dom";
 import Tourist from "./Tourist";
+import About from "./About";
 
 
 const Home = () => {
@@ -98,6 +99,11 @@ const Home = () => {
                 addTourist.map(tourist => <Tourist key={tourist._id} tourist={tourist}></Tourist>)
             }
           </div>
+           </div>
+
+
+           <div>
+           <About></About>
            </div>
 
         </div>
