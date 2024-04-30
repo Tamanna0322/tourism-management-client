@@ -14,12 +14,16 @@ import { useLoaderData } from "react-router-dom";
 import Tourist from "./Tourist";
 import About from "./About";
 import Another from "./Another";
+import Country from "./Country";
+
 
 
 const Home = () => {
 
     const addTourist = useLoaderData().slice(0, 6);
     console.log(addTourist);
+
+   
 
     return (
         <div>
@@ -101,7 +105,11 @@ const Home = () => {
             }
           </div>
            </div>
+ 
 
+            <div>
+                <Country></Country>
+            </div>
             
             <div>
                 <Another></Another>

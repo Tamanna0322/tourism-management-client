@@ -19,6 +19,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Update from './components/Update';
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home></Home>,
         loader: () => fetch('https://tourism-management-server-pi.vercel.app/add')
+        
       },
       {
         path: '/login',
@@ -66,6 +68,9 @@ const router = createBrowserRouter([
         path: '/update/:id',
         element: <PrivateRoute><Update></Update></PrivateRoute>,
         loader: ({params}) => fetch(`https://tourism-management-server-pi.vercel.app/add/${params.id}`)
+      },
+      {
+       
       }
     ]
   },

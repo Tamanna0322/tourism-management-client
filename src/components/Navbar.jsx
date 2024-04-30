@@ -1,12 +1,19 @@
 import { NavLink } from "react-router-dom";
 import travel from '../assets/travel.jpg';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 
 const Navbar = () => {
 
   const { user, logout } = useContext(AuthContext);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleToggle = () => {
+    const newTheme = darkMode ? 'light' : 'dark';
+    setDarkMode(!darkMode);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   return (
     <div className="">
@@ -58,6 +65,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <div className={`navbar ${darkMode ? ' text-white' : 'bg-base-100 text-black'}`}>
+          <input type="checkbox" value="synthwave" className="toggle theme-controller"  checked={darkMode}
+            onChange={handleToggle}/>
+          </div>
+       
               {
                  user ? <div className="dropdown dropdown-end md:mr-3 flex">
                  <div tabIndex={0} role="button" className="btn btn-circle avatar tooltip tooltip-bottom" data-tip={user?.displayName || 'User name not found'}>
