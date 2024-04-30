@@ -1,7 +1,7 @@
 
 # TourTrek
 
-- Live Site: [https://tourism-management-600b9.web.app] (https://tourism-management-600b9.web.app)
+- Live Site: [https://tourism-management-600b9.web.app](https://tourism-management-600b9.web.app)
 
  ## Features 
 
