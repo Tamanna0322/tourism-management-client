@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 
@@ -52,7 +53,7 @@ const Item = ({ myItem, control, setControl}) => {
             <td>$ {myItem.average}</td>
             <td>{myItem.time}</td>
             <td>{myItem.email}</td>
-            <td> <button className='btn text-white bg-gradient-to-r from-lime-600 to-lime-500'>Update</button></td>
+            <td> <Link to={`/update/${myItem._id}`}><button className='btn text-white bg-gradient-to-r from-lime-600 to-lime-500'>Update</button></Link></td>
             <td><button onClick={() => handleDelete(myItem._id)} className='btn text-white bg-gradient-to-r from-lime-600 to-lime-500'>Delete</button></td>
         </tr>
 
